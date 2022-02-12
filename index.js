@@ -1,3 +1,4 @@
+
 //1.Создаем функцию добавленя задачи в разметку
 //1.1 получаем ссылки на эл-ты разметки
 const todoWrapperRef = document.querySelector('.todo__wrapper');
@@ -17,29 +18,31 @@ window.addEventListener('keydown',onPressKey);
 
  let arrOfTodo = [];
 
+
 function onCreateMagic(){
+todoListRef.innerHTML = '';
 
    const inputText = todoInputRef.value;
 
 if(inputText){
    arrOfTodo.push({description:`${inputText}`, status:false});
-   const render = renderMarkup(arrOfTodo);
-return todoListRef.insertAdjacentHTML('beforeend', render);}
-};
-//console.log(arrOfTodo)
 
- function renderMarkup([{description, status}]){
+   const render = arrOfTodo.map(renderMarkup).join('');
+   //console.log(render);
+
+ todoListRef.innerHTML += render}}
+;
+console.log(arrOfTodo);
+
+ function renderMarkup({description, status}){
     return `
     <li class="todo__list-item">
     <p class="todo__list-text"> ${description}</p>
     <input type="checkbox" data-status="${status}" class="todo__list-checkbox">
     <button type="button" class="todo__list-btn">Удалить</button>
 </li>`;
-
  };
  
- 
-
 // делаем пррверку на клавиатуру
 function onPressKey(event){
    //console.log(event.key)
@@ -47,3 +50,6 @@ function onPressKey(event){
       onCreateMagic();
    }
 };
+
+
+
