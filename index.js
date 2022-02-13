@@ -30,17 +30,19 @@ if(inputText){
    const render = arrOfTodo.map(renderMarkup).join('');
    //console.log(render);
 
- todoListRef.innerHTML += render}}
+ todoListRef.innerHTML += render}
+todoInputRef.value=''}
 ;
 console.log(arrOfTodo);
 
  function renderMarkup({description, status}){
     return `
+    
     <li class="todo__list-item">
     <p class="todo__list-text"> ${description}</p>
     <input type="checkbox" data-status="${status}" class="todo__list-checkbox">
     <button type="button" class="todo__list-btn">Удалить</button>
-</li>`;
+</li> `;
  };
  
 // делаем пррверку на клавиатуру
